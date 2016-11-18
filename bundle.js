@@ -45,21 +45,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
-	module.exports = __webpack_require__(1);
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
-	var _main = __webpack_require__(2);
+	var _main = __webpack_require__(1);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _es6Module = __webpack_require__(6);
+	var _es6Module = __webpack_require__(5);
 
 	var _es6Module2 = _interopRequireDefault(_es6Module);
 
@@ -70,16 +62,16 @@
 	_es6Module2.default.say();
 
 /***/ },
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(3);
+	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(4)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -96,21 +88,21 @@
 	}
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(3)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "body {\n  background: #f5f5f5; }\n  body h1 {\n    color: red;\n    font-size: 20px; }\n", ""]);
+	exports.push([module.id, "body {\n  background: #f5f5f5;\n  background: url(\"https://www.lgstatic.com/parttime-jobs/static/myself/modules/common/img/top-bg_c3d43c9.jpg\"); }\n  body h1 {\n    color: red;\n    font-size: 20px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -165,7 +157,7 @@
 	};
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -417,7 +409,7 @@
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
