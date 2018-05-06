@@ -5,6 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成html文件并�
 // 设置生成css 的路径和文件名，会自动将对应entry入口js文件中引入的CSS抽出成单独的文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制文件
+
 // webpack.config.js
 module.exports = {
   mode: 'development',
@@ -66,7 +68,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+      from: './app/images',
+      to: '../images/',
+      test: /images\/(.+)\.png$/
+    }
+    ], {debug: 'info' })
 
     //new webpack.optimize.splitChunks('vendors', 'vendors.js'),
     /*   new HtmlWebpackPlugin({
