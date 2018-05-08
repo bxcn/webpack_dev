@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "webpack-dev-server --open --content-base dist/"
+    "start:dev": "webpack-dev-server --open --content-base dist/",
+    "production" : "webpack --mode production",
+    "development" : "webpack --mode development"
   },
   "author": "",
   "license": "ISC",

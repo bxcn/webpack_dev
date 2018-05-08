@@ -25,7 +25,7 @@ module.exports = {
     contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "app/")], //指定多个文件入口
     compress: true, //指定压缩
     publicPath: "/dist/", // 此路径下的打包文件可在浏览器中访问。 https://doc.webpack-china.org/configuration/dev-server
-    port: 9000 //指定商品
+    port: 9090 //指定商品
   },
   // 新添加的module属性
   module: {
@@ -53,15 +53,45 @@ module.exports = {
     ],
     noParse: [/moment-with-locales/]
   },
+  resolve: {
+    alias:{
+      commonA: path.resolve(__dirname,'./app/js/common/a.js')
+    },
+    // 自动解析确定的扩展
+    extensions: [".js", ".json","scss"]
+  },
   externals: {
     'react': 'window.React'
   },
   optimization: {
+    /*    splitChunks: {
+          name: 'vendors',
+          filename: 'js/[name].bundle.js', // 生成后的文件名，虽说用了[name]，但实际上就是'commons.bundle.js'了
+          minChunks: 1, // 设定要有4个chunk（即4个页面）加载的js模块才会被纳入公共代码。这数目自己考虑吧，我认为3-5比较合适。
+        }*/
     splitChunks: {
-      name: 'vendors',
-       filename: 'js/[name].bundle.js', // 生成后的文件名，虽说用了[name]，但实际上就是'commons.bundle.js'了
-        minChunks: 1, // 设定要有4个chunk（即4个页面）加载的js模块才会被纳入公共代码。这数目自己考虑吧，我认为3-5比较合适。
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
     }
+  },
+  /**
+   * 配置如何展示性能提示。例如，如果一个资源超过 250kb，webpack 会对此输出一个警告来通知你。
+   * https://doc.webpack-china.org/configuration/performance/
+   * @type {Object}
+   */
+  performance: {
+    hints: false,
+    // 入口起点表示针对指定的入口，对于所有资源，要充分利用初始加载时(initial load time)期间。
+    // 此选项根据入口起点的最大体积，控制 webpack 何时生成性能提示。默认值是：250000 (bytes)。
+    maxEntrypointSize: 400000,
+    //资源(asset)是从 webpack 生成的任何文件。此选项根据单个资源体积，控制 webpack 何时生成性能提示。默认值是：250000 (bytes)。
+    maxAssetSize: 100000
+
   },
   plugins: [
     //把入口文件里面的数组打包成vendors.js
@@ -69,13 +99,12 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new CopyWebpackPlugin([
-      {
+    new CopyWebpackPlugin([{
       from: './app/images',
       to: '../images/',
       test: /images\/(.+)\.png$/
-    }
-    ], {debug: 'info' })
+    }], { debug: 'info' }),
+    new webpack.HotModuleReplacementPlugin()
 
     //new webpack.optimize.splitChunks('vendors', 'vendors.js'),
     /*   new HtmlWebpackPlugin({
@@ -89,14 +118,14 @@ module.exports = {
     //new webpack.optimize.CommonsChunkPlugin("commons.js"),
     //cssExtractor,
     // 压缩JS
-    /*    new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false
-          },
-          //mangle 通过设置except数组来防止指定变量被改变
-          mangle: {
-            except: ['$super', '$', 'exports', 'require']
+    /*  new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        },
+        //mangle 通过设置except数组来防止指定变量被改变
+        mangle: {
+          except: ['$super', '$', 'exports', 'require']
         }
-        })*/
+      })*/
   ]
 }
