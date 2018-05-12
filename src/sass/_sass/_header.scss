@@ -1,0 +1,135 @@
+.c-header-block {
+  position:fixed;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 60px;
+  background: #FFF;
+  z-index : 10001;
+  padding: 0 15px;
+  line-height: 60px;
+  @extend %clearfix;
+  .header-title{
+    font-size: 20px;
+    color: #232220;
+    .pink-text{
+     color: $color-red;
+    }
+  }
+
+  .user-box{
+    height: 24px;
+    background: #FFFFFF;
+    border: 1px solid #DEDEDE;
+    border-radius: 3px;
+    margin-top: 18px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 23px;
+    font-size: 12px;
+    color: #707070;
+    padding: 0 12px;
+    .icon-notice{
+      width: 18px;
+      height: 18px;
+      overflow: hidden;
+      margin-top: 5px;
+      background-image: url('#{$baseImg}/common/icon/icon_logout.svg');
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.c-tab-block{
+  height: 66px;
+  line-height: 66px;
+  margin:20px;
+  padding: 15px 20px;
+  background: $color-white;
+  overflow: hidden;
+  .tab-list{
+    overflow: hidden;
+    .tab-block{
+      height: 36px;
+      line-height: 36px;
+      float: left;
+      background: #BEC3C7;
+      border-radius: 3px;
+      text-align: center;
+      margin-right: 5px;
+      a{
+        padding: 0 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 15px;
+        color: $color-white;
+      }
+      &.active{
+        background: $color-green;
+      }
+    }
+  }
+}
+
+.search-box{
+  overflow: hidden;
+  .search-tab{
+    overflow: hidden;
+    margin-right: 10px;
+    &:last-child{
+      margin-right: 0;
+      margin-left: 10px;
+    }
+    .title-text{
+      font-size: 15px;
+      color: $color-gray;
+      float: left;
+      line-height: 36px;
+      margin-right: 10px;
+    }
+    .select-block{
+      width: 120px;
+      height: 36px;
+      line-height: 36px;
+      float: left;
+      border-radius: 3px;
+      border: 1px solid #DEDEDE;
+      outline: none;
+      padding-left: 6px;
+      padding-right: 4px;
+      @extend %ellipsis;
+      option{
+        padding: 10px 0 !important;
+      }
+      &.input{
+        color: $color-black;
+        cursor: pointer;
+      }
+    }
+    .search-input{
+      width: 190px;
+      height: 36px;
+      padding: 0 5px;
+      border-radius: 3px;
+      font-size: 15px;
+      border: 1px solid #DEDEDE;
+      outline: none;
+    }
+
+    .search-btn{
+      width: 60px;
+      height: 36px;
+      text-align: center;
+      line-height: 36px;
+      background: #40CAC0;
+      border-radius: 3px;
+      color: $color-white;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
+}

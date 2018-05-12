@@ -1,0 +1,123 @@
+/**
+ * 左侧全局导航栏
+ * Author：kangxu
+ * Date: 2017/10/31 11:21
+ */
+//侧边栏高度100%
+.c-left{
+  width:180px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top:0;
+  background:  #202329;
+  z-index:10000;
+  //内容区域
+  .left-content{
+    width: 100%;
+    margin-top: 50px;
+    //头像照片
+    .img{
+      text-align: center;
+      width:100%;
+      min-height:130px;
+      .photo{
+        width: 102px;
+        height:102px;
+        border-radius: 50%;
+      }
+      .name{
+        font-size: 13px;
+        margin-top:4px;
+        color: #676782 ;
+      }
+    }
+  }
+  //侧边栏列表
+  .list-block{
+    width: 100%;
+    margin-top: 120px;
+    //模块
+    .item-block{
+      display:block;
+      padding:20px 22px;
+      font-size: 15px;
+      position: relative;
+      overflow: hidden;
+      color:#676782;
+
+      //图片外层div
+      > .icon-block{
+        float: left;
+        width:20px;
+        height:20px;
+        background-position:center center;
+        background-repeat: no-repeat;
+        background-size:contain;
+        // 发现人才
+        &.findTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_find');
+        }
+        // 管理人才
+        &.manageTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_people');
+        }
+        // 搜索人才
+        &.searchTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_searchs');
+        }
+        //管理职位
+        &.manageJob{
+          @include  imageSet('#{$baseImg}/common/icon/icon_position');
+        }
+        //账号信息
+        &.account{
+          @include  imageSet('#{$baseImg}/common/icon/icon_account');
+        }
+        &.wabi{
+          @include  imageSet('#{$baseImg}/common/icon/icon_wabi');
+        }
+      }
+      //文字
+      > .name-block{
+        float: right;
+      }
+
+      &.active,
+      &:hover{
+        color: #1FD76B;
+        &.active {
+          background:rgba(255,255,255,0.1);
+        }
+
+        // 发现人才
+        .findTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_find_selected');
+        }
+        // 搜索人才
+        .searchTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_searchs_selected');
+        }
+        //管理人才
+        .manageTalents {
+          @include  imageSet('#{$baseImg}/common/icon/icon_people_selected');
+        }
+        //管理职位
+        .manageJob{
+          @include  imageSet('#{$baseImg}/common/icon/icon_position_selected');
+        }
+        //账号信息
+        .account{
+          @include  imageSet('#{$baseImg}/common/icon/icon_account_selected');
+        }
+        //我的蛙币
+        .wabi{
+          @include  imageSet('#{$baseImg}/common/icon/icon_wabi_selected');
+        }
+
+      }
+
+    }
+
+  }
+}
