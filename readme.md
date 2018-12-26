@@ -1,35 +1,4 @@
-编译webpack.DllPlugin命令
+当使用webpack开发服务器或中间件时，内联嵌入javascript和css源代码
+> npm install --save-dev html-webpack-inline-source-plugin
 
-```bash
-webpack --config=config.dll.js
-```
-
-webpack.DllPlugin命令配置文件
-```js
-const webpack = require('webpack');
-
-const vendors = [
-    'react',
-    'react-dom',
-    // ...其它库
-];
-
-module.exports = {
-    output: {
-        path: 'build',
-        filename: '[name].js',
-        library: '[name]',
-    },
-    entry: {
-        "lib": vendors,
-    },
-    plugins: [
-        new webpack.DllPlugin({
-            path: 'manifest.json',
-            name: '[name]',
-            context: __dirname,
-        }),
-    ],
-};
-
-```
+> npm install --save-dev html-webpack-include-assets-plugin
